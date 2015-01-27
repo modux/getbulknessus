@@ -1,4 +1,6 @@
 #!/usr/bin/env python
+# by Konrads Smelkovs <konrads.smelkovs@kpmg.co.uk>
+# Licence - CC-BY, else do whatever you want with this
 
 import cookielib, urllib2,json, time
 import ssl
