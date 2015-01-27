@@ -19,15 +19,13 @@ ctx.verify_mode = ssl.CERT_NONE
 # cj = cookielib.CookieJar()
 # urllib2 = urllib2.build_urllib2(urllib2.HTTPCookieProcessor(cj))
 
-url="https://192.168.61.172:8834"
-url="http://localhost:4445"
-login="konrads"
-password = "konrads"
+url="http://localhost:8834"
+login="user"
+password = "pass"
 scanfolder="My Scans"
 SLEEP=2
 
 data=json.dumps({'username': login, 'password':password})
-data="""{"username":"konrads","password":"konrads"}"""
 request=urllib2.Request(url+"/session",data,{'Content-Type': 'application/json; charset=UTF-8',
 											  })
 # opener.open(request,context=ctx)
