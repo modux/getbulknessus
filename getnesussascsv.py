@@ -8,16 +8,6 @@ ctx.check_hostname = False
 ctx.verify_mode = ssl.CERT_NONE
 
 
-# proxy = urllib2.ProxyHandler({'https':'https://127.0.0.1:8080'})
-# opener = urllib2.build_opener(proxy)
-# urllib2.install_opener(opener)
-
-# urllib2.urlopen("https://192.168.61.172:8834",context=ctx).read()
-
-
-
-# cj = cookielib.CookieJar()
-# urllib2 = urllib2.build_urllib2(urllib2.HTTPCookieProcessor(cj))
 
 url="http://localhost:8834"
 login="user"
