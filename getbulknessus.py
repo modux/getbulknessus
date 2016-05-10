@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # by Konrads Smelkovs <konrads.smelkovs@kpmg.co.uk>
-# Shouts to Sash :)
+# Cool contributions by sash
 # Licence - CC-BY, else do whatever you want with this
 
 import urllib2
@@ -86,7 +86,19 @@ if args.debug:
 for s in scans:
     if args.debug:
         print "[D] Exporting %s" % s['name']
-    data = json.dumps({'format': args.format})
+
+    if args.format == "html":
+        values = {'report': s["id"],
+                  "chapters": "compliance;compliance_exec;vuln_by_host;vuln_by_plugin;vuln_hosts_summary",
+                  "format": args.format
+                  }
+        data = json.dumps(values)
+
+    else:
+
+        data = json.dumps({'format': args.format})
+
+    print data
     request = urllib2.Request(args.url + "/scans/%i/export" % s["id"], data,
                               {'Content-Type': 'application/json',
                                'X-Cookie': 'token=' + str(token)})
