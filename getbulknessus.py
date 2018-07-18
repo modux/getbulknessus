@@ -10,6 +10,7 @@ import sys
 import argparse
 import ssl
 import os
+import re
 
 try:
     ctx = ssl.create_default_context()
@@ -119,8 +120,9 @@ for s in scans:
             download = urllib2.Request(args.url + "/scans/%s/export/%s/download?token=%s" % (s["id"], fileref, token),
                                        headers={'X-Cookie': 'token=' + str(token)})
             f = urllib2.urlopen(download, context=ctx)
-            print "[**] Downloaded report for %s" % s["name"]
-            with open(os.path.join(OUTPUDIR, "{}.{}".format(s["name"], args.format)), "wb") as rep:
+            fname = re.sub('[<>:"\\\*/\|\?]','_', s["name"])
+            print "[**] Downloaded report for %s" % fname
+            with open(os.path.join(OUTPUDIR, "{}.{}".format(fname, args.format)), "wb") as rep:
                 rep.write(f.read())
             break
         else:
